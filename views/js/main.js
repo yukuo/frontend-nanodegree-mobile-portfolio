@@ -398,6 +398,11 @@ var pizzaElementGenerator = function(i) {
   return pizzaContainer;
 };
 
+//Move new size calculation outside for loop to solve FSL problem
+var randomPizzaCount = document.querySelectorAll(".randomPizzaContainer").length;
+var randomPizzaList = document.querySelectorAll(".randomPizzaContainer");
+var randomPizzaWidth = randomPizzaList[0].offsetWidth;
+
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
 var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
@@ -448,9 +453,6 @@ var resizePizzas = function(size) {
   }
 
   //Move new size calculation outside for loop to solve FSL problem
-  var randomPizzaCount = document.querySelectorAll(".randomPizzaContainer").length;
-  var randomPizzaList = document.querySelectorAll(".randomPizzaContainer");
-  var randomPizzaWidth = randomPizzaList[0].offsetWidth;
   var dx = determineDx(randomPizzaList[0], size);
   var newwidth = (randomPizzaWidth + dx) + 'px';
 
@@ -549,7 +551,8 @@ window.addEventListener('scroll', onScroll);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
+  //Change to 30 pizzas and it should be enough to cover the entire screen
+  for (var i = 0; i < 30; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";

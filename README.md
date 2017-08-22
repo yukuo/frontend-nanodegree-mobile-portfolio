@@ -1,10 +1,17 @@
+## Steps to Run the Project
+* Open index.html to run PageSpeed Insights test
+* Open views/pizza.html to run FPS test
+
+
 ## Optimization Made for PageSpeed Insights Test
 * Converted pizzeria-min.jpg to be much smaller for the thumbnail rendering
 * Moved style.css inline in index.html to save 1 RTT for critical resource downloads
 
+
 ## Optimization Made for FPS Test
 * Debounced scroll event from recalculating CSS style for updatePositions()
 * Moved new size calculation outside for loop to solve FSL problem for changePizzaSizes()
+* Reduced the number of sliding pizza to 30
 
 
 ## Website Performance Optimization portfolio project
